@@ -1,0 +1,218 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0;100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(bg.jpg);
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.body {
+    position: relative;
+    width: min(90vw, 90vh, 700px);
+    width: min(90vw, 90dvh, 700px);
+    aspect-ratio: 1 / 1;
+}
+
+#board {
+    background: linear-gradient(
+        rgb(155, 132, 132),
+        rgb(121, 70, 78)
+    );
+    height: 100%;
+    width: 100%;
+    border: 2px solid black;
+    display: grid;
+    grid-template-rows: repeat(18, 1fr);
+    grid-template-columns: repeat(18, 1fr);
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#scoreBox {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-shadow: 2px 2px 3px black;
+    z-index: 10;
+}
+
+#hiscoreBox {
+    position: fixed;
+    top: 65px;
+    right: 25px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-shadow: 2px 2px 3px black;
+    z-index: 10;
+}
+
+.snake {
+    background-color: purple;
+    border: 3px solid black;
+    border-radius: 13px;
+    z-index: 2;
+}
+
+.head {
+    background: linear-gradient(red, yellow);
+    border: 2px solid purple;
+    transform: scale(1.2);
+    border-radius: 12px;
+    z-index: 3;
+}
+
+.food {
+    background: linear-gradient(
+        red,
+        blue,
+        yellow
+    );
+    border: 1px solid white;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+#gameOver {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(300px, 90%);
+    padding: 30px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.85);
+    border: 3px solid white;
+    border-radius: 20px;
+    color: white;
+    font-family: Poppins, sans-serif;
+    display: none;
+    z-index: 100;
+}
+
+#gameOver h1 {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+#gameOver p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+#gameOver button {
+    padding: 10px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: white;
+    color: black;
+    transition: 0.2s;
+}
+
+#gameOver button:hover {
+    transform: scale(1.08);
+    background: yellow;
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .body {
+        width: min(95vw, 75dvh);
+    }
+
+    #scoreBox,
+    #hiscoreBox {
+        position: absolute;
+        top: auto;
+        bottom: calc(100% + 15px);
+        font-size: clamp(14px, 4vw, 22px);
+        white-space: nowrap;
+    }
+
+    #scoreBox {
+        left: 0;
+        right: auto;
+    }
+
+    #hiscoreBox {
+        right: 0;
+    }
+
+    .snake {
+        border-width: 2px;
+        border-radius: 6px;
+    }
+
+    .head {
+        border-width: 1px;
+        border-radius: 6px;
+    }
+
+    #gameOver {
+        padding: 20px;
+    }
+
+    #gameOver h1 {
+        font-size: 28px;
+    }
+
+    #gameOver p {
+        font-size: 18px;
+    }
+
+    #gameOver button {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    .body {
+        width: min(95vw, 70dvh);
+    }
+
+    #scoreBox,
+    #hiscoreBox {
+        font-size: 15px;
+    }
+
+    .snake {
+        border-width: 1px;
+        border-radius: 4px;
+    }
+
+    .head {
+        border-width: 1px;
+        border-radius: 4px;
+    }
+
+    #gameOver h1 {
+        font-size: 24px;
+    }
+}
